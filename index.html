@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">    <link rel="stylesheet" href="./Assets/styles.css">
+    <title>Weather</title>
+  </head>
+  <body>
+      <!-- Navbar -->
+    <nav class="navbar navbar-light bg-info">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
+        </div>
+      </nav>
+      <!-- Jumbotron -->
+      <div class="jumbotron jumbotron-fluid col-9 float-right pb-2 pt-3">
+        <div class="container">
+          <h1 class="display-9 cityName"></h1>
+          <p class="lead temp" >Temp: </p>
+          <p class="lead wind">Wind: </p>
+          <p class="lead humidity">Humidity: </p>
+          <p class="lead uvIndex">UV Index: </p>
+        </div>
+      </div>
+      
+      <!-- list group -->
+      <!-- <div class="card d-flex justify-content-start container">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div> -->
+
+<div class="Menu">
+    <ul class="nav flex-column col-3 nav-pills mt-3 pr-4 pl-2" id="ul">
+        <h3>Search for City:</h3>
+        <li class="nav-item mb-3">
+            <input class="form-control border-end-0 border nav-pill" type="text" placeholder="City" id="inputValue">
+        </li>
+        <li class="nav-item mb-3">
+            <button type="button" class="btn btn-primary btn-block" id="searchBtn">Search</button>
+            <hr></hr>
+        </li>
+        <li class="nav-item mb-3" class="test"></li>
+
+    </ul>
+</div>
+
+
+
+      <!--5 Day Forecast -->
+
+      <div class="container">
+        <div class="row">
+
+          <div class="col-2 bg-primary text-white">
+            <p class="date1"></p>
+              <p class="icon1"></p>
+              <p class="temp1">Temp: </p>
+              <p class="wind1">Wind: </p>
+              <p class="humidity1">Humidity: </p>
+          </div>
+          <div class="col-2 bg-primary text-white">
+            One of three columns
+          </div>
+          <div class="col-2 bg-primary text-white">
+            One of three columns
+          </div>
+          <div class="col-2 bg-primary text-white">
+            One of three columns
+          </div>
+          <div class="col-2 bg-primary text-white">
+            One of three columns
+          </div>
+        </div>
+      </div>
+
+    <!-- JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./Assets/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
