@@ -42,19 +42,27 @@ button.addEventListener('click', function(event) {
         .then(data => {
             console.log(data)
 
+            for(let i = 0; i < 5; i++) {
+                var temp1 = document.getElementsByClassName('.temp0');
+                var temp5 = data.daily[i].temp.day;
+                temp1.innerHTML += temp5 + '°F'
+                console.log(temp1)
+
+
+            }
 
             // 5 day forecast variables
-            var date1 = document.querySelector('.date1')
-            var icon1 = document.querySelector('.icon1');
-            var temp1 = document.querySelector('.temp1');
-            var wind1 = document.querySelector('.wind1');
-            var humidity1 = document.querySelector('.humidity1');
+            var date1 = document.querySelector('.date0')
+            var icon1 = document.querySelector('.icon0');
+            var temp1 = document.querySelector('.temp0');
+            var wind1 = document.querySelector('.wind0');
+            var humidity1 = document.querySelector('.humidity0');
 
             // Locate variables
             var date5 = data.daily[0].dt *1000
             var newDate = new Date(date5).toLocaleDateString("en-US")
             var icon = data.daily[0].weather[0].icon;
-            var temp5 = data.daily[0].temp.day;
+            
             var wind5 = data.daily[0].wind_speed;
             var humidity5 = data.daily[0].humidity;
 
@@ -67,7 +75,7 @@ button.addEventListener('click', function(event) {
             icon1.appendChild(img);
 
             // Display Temperature
-            temp1.innerHTML += temp5 + '°F'
+            
 
             // Display Wind
             wind1.innerHTML += wind5 + ' MPH'
