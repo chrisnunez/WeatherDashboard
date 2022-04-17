@@ -4,14 +4,11 @@
 var button = document.getElementById('searchBtn');
 var inputValue = document.getElementById('inputValue');
 var cityName = document.querySelector('.cityName');
-var tempe = document.querySelector('.temp');
+var temp = document.querySelector('.temp');
 var wind = document.querySelector('.wind');
 var humidity = document.querySelector('.humidity');
 var uvIndex = document.querySelector('.uvIndex');
-var day1 = document.querySelector('.day1')
-var wind5 = document.querySelector('.windy');
-var humidity0 = document.querySelector('.humidity0')
-var temperature = document.querySelector('.temperature0')
+
 
 // Search button to display All weather
 button.addEventListener('click', function(event) {
@@ -31,7 +28,7 @@ button.addEventListener('click', function(event) {
         var cityLon = data['coord']['lon']
         // Main display innerHTML
         cityName.innerHTML += ciudadName;
-        tempe.innerHTML += cityTemp + '°F';
+        temp.innerHTML += cityTemp + '°F';
         wind.innerHTML += cityWind + ' MPH';
         humidity.innerHTML += cityHum + ' %';
 
@@ -43,57 +40,40 @@ button.addEventListener('click', function(event) {
             console.log(data)
 
             for(let i = 0; i < 5; i++) {
-                var temp1 = document.getElementsByClassName('.temp0');
+                // temperature 5 day loop
+                var temp1 = document.getElementById('temp' + i);
                 var temp5 = data.daily[i].temp.day;
                 temp1.innerHTML += temp5 + '°F'
-                console.log(temp1)
+    
+                // wind 5 day loop
+                var wind0 = document.getElementById('wind' + i);
+                var wind5 = data.daily[i].wind_speed;
+                wind0.innerHTML += wind5 + ' MPH'
+
+                // humidity 5 day loop
+                var humidity1 = document.getElementById('humidity' + i);
+                var humidity5 = data.daily[i].humidity;
+                humidity1.innerHTML += humidity5
+
+                // icon 5 day loop
+                var icon1 = document.getElementById('icon' + i);
+                var icon = data.daily[i].weather[0].icon;
+                var img = document.createElement('img')
+                img.setAttribute("src", "http://openweathermap.org/img/wn/" + icon + ".png");
+                icon1.appendChild(img);
+
+                // date 5 day loop
+                var date1 = document.getElementById('date' + i)
+                var date5 = data.daily[i].dt *1000
+                var newDate = new Date(date5).toLocaleDateString("en-US")
+                date1.innerHTML += newDate
 
 
             }
 
-            // 5 day forecast variables
-            var date1 = document.querySelector('.date0')
-            var icon1 = document.querySelector('.icon0');
-            var temp1 = document.querySelector('.temp0');
-            var wind1 = document.querySelector('.wind0');
-            var humidity1 = document.querySelector('.humidity0');
-
-            // Locate variables
-            var date5 = data.daily[0].dt *1000
-            var newDate = new Date(date5).toLocaleDateString("en-US")
-            var icon = data.daily[0].weather[0].icon;
-            
-            var wind5 = data.daily[0].wind_speed;
-            var humidity5 = data.daily[0].humidity;
-
-            // Display Date
-            date1.innerHTML += newDate
-
-            // Display icon img
-            var img = document.createElement('img')
-            img.setAttribute("src", "http://openweathermap.org/img/wn/" + icon + ".png");
-            icon1.appendChild(img);
-
-            // Display Temperature
-            
-
-            // Display Wind
-            wind1.innerHTML += wind5 + ' MPH'
-
-            // Display Humidity
-            humidity1.innerHTML += humidity5
-
-
-            
-            
 
         })
 
-        // fetch("http://openweathermap.org/img/wn/" + icon + ".png")
-        // .then(res => res.json())
-        // .then(data => {
-            
-        // })
 
     })
 // Adds city under search
@@ -113,7 +93,6 @@ function addLi() {
     ul.appendChild(li);
     localStorage.setItem('City', inputValue.value)
 }
-
 
 
 
