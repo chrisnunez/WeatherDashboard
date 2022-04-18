@@ -7,7 +7,7 @@ var cityName = document.querySelector('.cityName');
 var temp = document.querySelector('.temp');
 var wind = document.querySelector('.wind');
 var humidity = document.querySelector('.humidity');
-var uvIndex = document.querySelector('.uvIndex');
+var mainDate = document.querySelector('.mainDate');
 
 
 // Search button to display All weather
@@ -26,11 +26,20 @@ button.addEventListener('click', function(event) {
         var cityHum = data['main']['humidity']
         var cityLat = data['coord']['lat']
         var cityLon = data['coord']['lon']
+        var cityDate = data.dt * 1000
+        var newMainDate = new Date(cityDate).toLocaleDateString("en-US")
+        var cityIcon = data.weather[0].icon
+        var cityImg = document.createElement('img')
+        cityImg.setAttribute("src", "http://openweathermap.org/img/wn/" + cityIcon + ".png");
+
         // Main display innerHTML
-        cityName.innerHTML += ciudadName;
+        cityName.innerHTML += ciudadName + ' ' + '(' + newMainDate + ')';
         temp.innerHTML += cityTemp + '°F';
         wind.innerHTML += cityWind + ' MPH';
         humidity.innerHTML += cityHum + ' %';
+        cityName.appendChild(cityImg);
+        
+
 
 
         // 5 day forecast
@@ -38,8 +47,26 @@ button.addEventListener('click', function(event) {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            // UV Index variables
+            var uvIndex = document.getElementById('uvIndex');
+            var getIndex = data.daily[0].uvi;
+            uvIndex.innerHTML += getIndex
+    
+            // UV Index colors
+            if(getIndex < 2) {
+                // Red
+                uvIndex.style.backgroundColor = 'green';
 
-            for(let i = 0; i < 5; i++) {
+            } else if(getIndex < 7, getIndex > 3) {
+                // Yellow
+                uvIndex.style.backgroundColor = "yellow";
+            } else {
+                // Red
+                uvIndex.style.backgroundColor = "red"
+            }
+            
+
+            for(let i = 1; i < 6; i++) {
                 // temperature 5 day loop
                 var temp1 = document.getElementById('temp' + i);
                 var temp5 = data.daily[i].temp.day;
@@ -68,9 +95,9 @@ button.addEventListener('click', function(event) {
                 var newDate = new Date(date5).toLocaleDateString("en-US")
                 date1.innerHTML += newDate
 
-
             }
 
+            
 
         })
 
@@ -79,16 +106,16 @@ button.addEventListener('click', function(event) {
 // Adds city under search
 addLi();
 // Adds city to local storage
+localStorage.setItem('City', inputValue.value)
 
-event.preventDefault();
+
 })
-
-
 
 // Create a function for adding an LI to the search history
 function addLi() {
     var ul = document.getElementById('ul');
-    var li = document.createElement('li');
+    var li = document.createElement('button');
+    li.className = 'btn btn-secondary btn-block';
     li.appendChild(document.createTextNode(inputValue.value));
     ul.appendChild(li);
     localStorage.setItem('City', inputValue.value)
@@ -100,13 +127,14 @@ function addLi() {
 // THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
 
 localStorage.setItem('City', inputValue.value)
-localStorage.getItem('City')
+
 
 
 
 
 // WHEN I view the UV index
 // THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+
 
 
 

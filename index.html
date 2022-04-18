@@ -19,11 +19,11 @@
       <!-- Jumbotron -->
       <div class="jumbotron jumbotron-fluid col-9 float-right pb-2 pt-3">
         <div class="container">
-          <h1 class="display-9 cityName"></h1>
+          <h1 class="display-9 cityName mainDate"></h1>
           <p class="lead temp" >Temp: </p>
           <p class="lead wind">Wind: </p>
           <p class="lead humidity">Humidity: </p>
-          <p class="lead uvIndex">UV Index: </p>
+          <p class="lead" >UV Index: <span id="uvIndex"></span></p>
         </div>
       </div>
       
@@ -46,7 +46,7 @@
             <button type="button" class="btn btn-primary btn-block" id="searchBtn">Search</button>
             <hr></hr>
         </li>
-        <li class="nav-item mb-3" class="test"></li>
+        
 
     </ul>
 </div>
@@ -58,13 +58,6 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-2 bg-primary text-white">
-            <p id="date0"></p>
-              <p id="icon0"></p>
-              <p id="temp0">Temp: </p>
-              <p id="wind0">Wind: </p>
-              <p id="humidity0">Humidity: </p>
-          </div>
           <div class="col-2 bg-primary text-white">
             <p id="date1"></p>
               <p id="icon1"></p>
@@ -92,6 +85,13 @@
               <p id="temp4">Temp: </p>
               <p id="wind4">Wind: </p>
               <p id="humidity4">Humidity: </p>
+          </div>
+          <div class="col-2 bg-primary text-white">
+            <p id="date5"></p>
+              <p id="icon5"></p>
+              <p id="temp5">Temp: </p>
+              <p id="wind5">Wind: </p>
+              <p id="humidity5">Humidity: </p>
           </div>
       </div>
 
