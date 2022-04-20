@@ -10,7 +10,11 @@ var humidity = document.querySelector('.humidity');
 var mainDate = document.querySelector('.mainDate');
 
 
-
+    var arr = ['']
+    localStorage.setItem('City', JSON.stringify(arr))
+    var testarr = JSON.parse(localStorage.getItem('City'))
+    testarr.push(inputValue.value)
+    console.log(testarr)
 
 // Add LI and click for data
 function addLi() {
@@ -116,7 +120,7 @@ function city() { fetch('https://api.openweathermap.org/data/2.5/weather?q=' + i
   })  
 }
     
-
+  
 
 
 // WHEN I click on a city in the search history
@@ -129,12 +133,7 @@ button.addEventListener('click', function() {
     city();  
     // Adds city under search
     addLi();
-    // create a ref from input value
-    // var arr = [inputValue.value]
-// prevent multiple entries
-    // localStorage.setItem('City', JSON.stringify(arr))
-    // var testarr = JSON.parse(localStorage.getItem('City'))
-    // testarr.push('test')
-    // console.log(testarr)
+  
+    
 
 })
