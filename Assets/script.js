@@ -9,27 +9,16 @@ var wind = document.querySelector('.wind');
 var humidity = document.querySelector('.humidity');
 var mainDate = document.querySelector('.mainDate');
 
-
-    var arr = ['']
-    localStorage.setItem('City', JSON.stringify(arr))
-    var testarr = JSON.parse(localStorage.getItem('City'))
-    testarr.push(inputValue.value)
-    console.log(testarr)
+var arr = localStorage.getItem('City') ? JSON.parse(localStorage.getItem('City')) : [];
+addLi();
 
 // Add LI and click for data
 function addLi() {
     var ul = document.getElementById('ul');
     var li = document.createElement('button');
-    li.className = 'btn btn-secondary btn-block test2';
-    // localStorage.setItem('li', JSON.stringify(li.className))
+    li.className = 'btn btn-secondary btn-block';
     li.appendChild(document.createTextNode(inputValue.value));
     ul.appendChild(li);
-
-    li.addEventListener('click', function(){
-        city();
-
-
-    })
     
 }
 
@@ -40,6 +29,8 @@ function city() { fetch('https://api.openweathermap.org/data/2.5/weather?q=' + i
 .then(res => res.json())
 .then((data) => {
     console.log(data)
+
+    
 
     // Main forecast display variables
     var ciudadName = data.name
@@ -118,9 +109,9 @@ function city() { fetch('https://api.openweathermap.org/data/2.5/weather?q=' + i
        }
     })
   })  
-}
-    
   
+}
+
 
 
 // WHEN I click on a city in the search history
@@ -130,10 +121,11 @@ function city() { fetch('https://api.openweathermap.org/data/2.5/weather?q=' + i
 
 // Search button to display All weather
 button.addEventListener('click', function() {
+   
     city();  
-    // Adds city under search
-    addLi();
-  
     
-
+    localStorage.setItem('City', JSON.stringify(arr));
+    arr.push(inputValue.value);
+    addLi();
+    
 })
